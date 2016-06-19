@@ -1,9 +1,17 @@
-img.image-item {
-    width: 300px;
+.image-item {
+    width: 33%;
+    max-height: 400px;
     margin: 0;
     padding: 0;
+    float: left;
+    object-fit: cover;
+
+    @media(min-width: 481px) and (max-width: 1320px) {
+        width: 50%;
+    }
+
+    @media(max-width: 480px) {
+        width: 100%;
+    }
 }
 
-main {
-    background: #000;
-}

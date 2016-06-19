@@ -2,6 +2,7 @@ import 'core-js';
 import 'reflect-metadata';
 import 'zone.js/dist/zone';
 import 'rxjs/Rx';
+import './main.less';
 
 import { enableProdMode } from '@angular/core';
 import { bootstrap } from '@angular/platform-browser-dynamic';

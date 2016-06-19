@@ -1,1 +1,3 @@
-<img src="{{wallpaper.url}}" class="image-item" *ngFor="let wallpaper of wallpapers" />
+<img *ngFor="let wallpaper of wallpapers" 
+     src="{{ wallpaper.url }}"
+     class="image-item" />
