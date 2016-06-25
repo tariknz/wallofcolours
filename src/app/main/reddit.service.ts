@@ -11,7 +11,8 @@ export class RedditService {
     }
 
     getWallpapers() : Observable<Wallpaper[]> {
-        return this.http.get('http://www.reddit.com/r/wallpapers.json')
+        return this.http
+            .get('http://www.reddit.com/r/wallpapers.json')
             .map(this.mapWallpapers);
     }
 
