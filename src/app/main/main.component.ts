@@ -5,7 +5,7 @@ import { WallpaperDirective } from './wallpaper.directive';
 @Component({
     selector: 'main',
     template: require('./main.component.html'),
-    styles: [require('./main.component.less')],
+    styles: [require('./main.component.less').toString()],
     providers: [RedditService],
     directives: [WallpaperDirective]
 })
