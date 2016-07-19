@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 
 import { Observable }     from 'rxjs/Observable';
 import { Wallpaper } from './wallpaper.model';
+import { WallpaperListing } from './wallpaper-listing.model';
 
 @Injectable()
 export class RedditService {
@@ -10,15 +11,21 @@ export class RedditService {
     constructor(private http: Http) {
     }
 
-    getWallpapers() : Observable<Wallpaper[]> {
+    getWallpapers(after: string) : Observable<WallpaperListing> {
+        let path = 'http://www.reddit.com/r/wallpapers.json?';
+        
+        // continues from last item loaded
+        if(after) path += 'after=' + after;
+        
         return this.http
-            .get('http://www.reddit.com/r/wallpapers.json')
+            .get(path)
             .map(this.mapWallpapers);
     }
 
     mapWallpapers(res: Response) {
         let body = res.json();
-        let model = new Array<Wallpaper>();
+        let listing = new WallpaperListing();
+        let wallpapers = new Array<Wallpaper>();
 
         body.data.children.forEach(post => {
             if (post.data.post_hint === 'image') {
@@ -27,12 +34,15 @@ export class RedditService {
                 item.url = post.data.url;
                 item.title = post.data.title;
 
-                model.push(item);
+                wallpapers.push(item);
             }
 
         });
 
-        return model;
+        listing.wallpapers = wallpapers;
+        listing.after = body.data.after;
+
+        return listing;
     }
 
 }
