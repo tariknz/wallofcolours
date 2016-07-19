@@ -12,7 +12,7 @@ export class RedditService {
     }
 
     getWallpapers(after: string) : Observable<WallpaperListing> {
-        let path = 'http://www.reddit.com/r/wallpapers.json?';
+        let path = '//www.reddit.com/r/wallpapers.json?';
         
         // continues from last item loaded
         if(after) path += 'after=' + after;
