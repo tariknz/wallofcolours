@@ -1,66 +1,75 @@
-.image-container {
+.main-container {
     margin: 0 auto;
     max-width: 800px;
-    position: relative;
-    line-height: 0;
+    -webkit-box-shadow: 0px 0px 26px 6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 26px 6px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 26px 6px rgba(0,0,0,0.75);
 
-    &:hover, &:active {
-        transition: 0.5s ease-out all;
+    .image-container {
+        position: relative;
+        line-height: 0;
+        -webkit-box-shadow: inset 0px 0px 31px -6px rgba(0,0,0,0.75);
+        -moz-box-shadow: inset 0px 0px 31px -6px rgba(0,0,0,0.75);
+        box-shadow: inset 0px 0px 31px -6px rgba(0,0,0,0.75);
+
+        &:hover, &:active {
+            transition: 0.5s ease-out all;
+
+            .image-item {
+                max-height: 600px;
+            }
+
+            .actions {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
 
         .image-item {
-            max-height: 600px;
+            width: 100%;
+            max-height: 20vh;
+            object-fit: cover;
+            transition: 0.5s ease-in all;
         }
 
         .actions {
-            visibility: visible;
-            opacity: 1;
+            position: absolute;
+            z-index: 10;
+            right: 5px;
+            bottom: 9px;
+            visibility: hidden;
+            transition: 0.5s ease-out all;
+            opacity: 0;
+
+            .btn {
+                padding: 15px 25px;
+                background: rgba(0,0,0,0.5);
+                color: #fff;
+                border: none;
+                cursor: pointer;
+                font-size: 18px;
+                border-radius: 5px;
+
+                &:hover {
+                    background: rgba(0,0,0,0.9);
+                }
+
+                &:active, &:focus {
+                    outline: none;
+                }
+            }
         }
-    }
 
-    .image-item {
-        width: 100%;
-        max-height: 20vh;
-        object-fit: cover;
-        transition: 0.5s ease-in all;
-    }
-
-    .actions {
-        position: absolute;
-        z-index: 10;
-        right: 5px;
-        bottom: 9px;
-        visibility: hidden;
-        transition: 0.5s ease-out all;
-        opacity: 0;
-
-        .btn {
-            padding: 15px 25px;
-            background: rgba(0,0,0,0.5);
+        &.load-more {
+            background: #263238;
+            text-align: center;
             color: #fff;
-            border: none;
+            padding: 40px 0;
             cursor: pointer;
-            font-size: 18px;
-            border-radius: 5px;
 
             &:hover {
-                background: rgba(0,0,0,0.9);
+                background: #37474F;
             }
-
-            &:active, &:focus {
-                outline: none;
-            }
-        }
-    }
-
-    &.load-more {
-        background: #263238;
-        text-align: center;
-        color: #fff;
-        padding: 40px 0;
-        cursor: pointer;
-
-        &:hover {
-            background: #37474F;
         }
     }
 }

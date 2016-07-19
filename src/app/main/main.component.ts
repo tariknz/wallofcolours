@@ -13,6 +13,7 @@ import { WallpaperListing } from './wallpaper-listing.model';
 export class MainComponent implements OnInit {
 
     private wallpaperListing: WallpaperListing;
+    private error: boolean;
     
     constructor(private service: RedditService) { }
 
@@ -21,7 +22,9 @@ export class MainComponent implements OnInit {
 
         this.service
             .getWallpapers(null)
-            .subscribe(result => this.wallpaperListing = result);
+            .subscribe(
+                result => this.wallpaperListing = result,
+                error =>  this.error = true);
     }
 
     open(url:string) {
@@ -34,8 +37,9 @@ export class MainComponent implements OnInit {
         this.service
             .getWallpapers(this.wallpaperListing.after)
             .subscribe(result => {
-                this.wallpaperListing.after = result.after;
-                this.wallpaperListing.wallpapers = this.wallpaperListing.wallpapers.concat(result.wallpapers);
-            });
+                    this.wallpaperListing.after = result.after;
+                    this.wallpaperListing.wallpapers = this.wallpaperListing.wallpapers.concat(result.wallpapers);
+                }, error => this.error = true
+            );
     }
 }
