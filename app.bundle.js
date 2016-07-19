@@ -68364,7 +68364,7 @@
 	        this.http = http;
 	    }
 	    RedditService.prototype.getWallpapers = function (after) {
-	        var path = 'http://www.reddit.com/r/wallpapers.json?';
+	        var path = '//www.reddit.com/r/wallpapers.json?';
 	        // continues from last item loaded
 	        if (after)
 	            path += 'after=' + after;
