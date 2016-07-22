@@ -1,8 +1,8 @@
 <div class="main-container">
     <div class="image-container" *ngFor="let wallpaper of wallpaperListing.wallpapers">
-        <img src="{{ wallpaper.url }}" class="image-item" />
+        <img src="{{ wallpaper.previewUrl }}" class="image-item" />
         <div class="actions">
-            <button class="btn"><i class="material-icons" (click)="open(wallpaper.url)">open_in_new</i></button>
+            <button class="btn" (click)="open(wallpaper.url)"><i class="material-icons">open_in_new</i></button>
         </div>
     </div>
     <div *ngIf="!error" class="image-container load-more" (click)="loadMore()">Load more..</div>

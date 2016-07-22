@@ -14,8 +14,8 @@ module.exports = {
             { test: /\.html$/, loader: 'html' },
             { 
                 test: /\.less$/, 
-                //loader: 'style!css!less',
-                loader: ExtractTextPlugin.extract('style', 'css!less'),
+                loader: 'component-style-loader!css-loader!less-loader',
+                //loader: ExtractTextPlugin.extract('style', 'css!less'),
                 exclude: /node_modules/
             },
             {
@@ -23,6 +23,11 @@ module.exports = {
                 loader: 'file?name=assets/[name].[hash].[ext]'
             },
         ]
+    },
+    resolveLoader: {
+        alias: {
+            'component-style-loader': require.resolve('./component-style-loader')
+        }
     },
     resolve: {
         extensions: ['', '.js', '.ts', '.less']

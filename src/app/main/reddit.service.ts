@@ -12,10 +12,10 @@ export class RedditService {
     }
 
     getWallpapers(after: string) : Observable<WallpaperListing> {
-        let path = '//www.reddit.com/r/wallpapers.json?';
+        let path = '//www.reddit.com/r/wallpapers.json?raw_json=1';
         
         // continues from last item loaded
-        if(after) path += 'after=' + after;
+        if(after) path += '&after=' + after;
         
         return this.http
             .get(path)
@@ -33,6 +33,13 @@ export class RedditService {
 
                 item.url = post.data.url;
                 item.title = post.data.title;
+
+                let previewImages = post.data.preview.images;
+                let resolutions = post.data.preview.images[0].resolutions;
+
+                let previewImage = resolutions.filter(m => m.width === 960)[0];               
+
+                item.previewUrl = previewImage ? previewImage.url : item.url;
 
                 wallpapers.push(item);
             }
