@@ -3,7 +3,7 @@
 This application connects to the Reddit API (r/wallpapers subreddit) and displays the most recent wallpapers. You can load more as you need and will only display images.
 
 The project is built in:
-* Angular 2 (rc1)
+* Angular 2 (2.0.0 final)
 * Webpack
 * LESS
 
