@@ -7,8 +7,6 @@ import { WallpaperListing } from './wallpaper-listing.model';
     selector: 'main',
     template: require('./main.component.html'),
     styles: [require('./main.component.less')],
-    providers: [RedditService],
-    directives: []
 })
 export class MainComponent implements OnInit {
 

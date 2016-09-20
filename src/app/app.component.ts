@@ -4,8 +4,7 @@ import { MainComponent } from './main/main.component';
 @Component({
     selector: 'app',
     styles: [require('./app.component.less')],
-    template: require('./app.component.html'),
-    directives: [ MainComponent ]
+    template: require('./app.component.html')
 })
 export class AppComponent implements OnInit {
     constructor() { }

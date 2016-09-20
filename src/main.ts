@@ -1,16 +1,10 @@
 import 'core-js';
-import 'reflect-metadata';
 import 'zone.js/dist/zone';
-import 'rxjs/Rx';
 
-import { enableProdMode } from '@angular/core';
-import { bootstrap } from '@angular/platform-browser-dynamic';
-import { HTTP_PROVIDERS } from '@angular/http';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { AppComponent } from './app/app.component';
+import { AppModule } from './app/app.module';
 
-//enableProdMode();
-
-bootstrap(AppComponent, [HTTP_PROVIDERS])
+platformBrowserDynamic().bootstrapModule(AppModule)
     .then(success => console.log(`Bootstrap success`))
     .catch(error => console.log(error));
